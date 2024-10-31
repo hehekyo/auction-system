@@ -79,9 +79,9 @@ export default function Home() {
 
   return (
     <div className='container mx-auto p-4'>
-      <h1 className='text-3xl font-bold mb-4'>拍卖列表</h1>
+      <h1 className='text-3xl font-bold mb-4'>Auction List</h1>
       <div className='p-4'>
-        <Button href="/auctions/create" type="primary">创建拍卖</Button>
+        <Button href="/auctions/create" type="primary">Create</Button>
       </div>
     <Table columns={columns} dataSource={auctions} rowKey="id" />    
     </div>

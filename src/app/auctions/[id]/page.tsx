@@ -1,5 +1,5 @@
 "use client"
-import { Card, Input, Button, Typography, message } from 'antd';
+import { Card, Input, Button, Typography, message,Descriptions } from 'antd';
 import { useState, useEffect } from 'react';
 
 
@@ -65,23 +65,27 @@ export default function AuctionDetail({ params }: { params: { id: string } }) {
 
   return (
     <div className='container mx-auto p-4'>
-      <Card title={`Auction ${auction.id}`}>
-        
-        <p>seller Address:${auction.sellerAddress}</p>
-        <p>Minimum Bid: ${auction.minBid}</p>
-        <p>Current Highest Bid: ${auction.highestBid || 'No bids yet'}</p>
-        <p>End Time: {new Date(auction.endTime).toLocaleString()}</p>
-        <Input
-          type="number"
-          placeholder="Enter your bid"
-          value={bid}
-          onChange={(e) => setBid(e.target.value)}
-          style={{ width: '100%', marginBottom: '10px' }}
-        />
-        <Button type="primary" onClick={handleBid} loading={loading}>
-         出价
-        </Button>
-      </Card>
+    <Title level={2}>Auction Details</Title>
+    <Descriptions bordered title={`Auction ${auction.id}`}>
+      <Descriptions.Item label="Seller Address">{auction.sellerAddress}</Descriptions.Item>
+      <Descriptions.Item label="Minimum Bid">${auction.minBid}</Descriptions.Item>
+      <Descriptions.Item label="Current Highest Bid">${auction.highestBid || 'No bids yet'}</Descriptions.Item>
+      <Descriptions.Item label="End Time">{new Date(auction.endTime).toLocaleString()}</Descriptions.Item>
+    </Descriptions>
+
+    <div className=' mt-4'>
+    <Input
+      type="number"
+      placeholder="Enter your bid"
+      value={bid}
+      onChange={(e) => setBid(e.target.value)}
+      style={{ width: '20%', marginRight: '10px', marginBottom: '10px' }}
+    />
+    <Button type="primary" onClick={handleBid} loading={loading}>
+      Bid
+    </Button>
     </div>
+
+  </div>
   );
 }
